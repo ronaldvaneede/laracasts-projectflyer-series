@@ -22,4 +22,11 @@ class FlyersController extends Controller
 
         return redirect()->back();
     }
+
+    public function show($zip, $street)
+    {
+        $flyer =  Flyer::locatedAt($zip, $street)->first();
+
+        return view('flyers.show', compact('flyer'));
+    }
 }
