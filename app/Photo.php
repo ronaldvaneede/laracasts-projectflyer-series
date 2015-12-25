@@ -24,7 +24,7 @@ class Photo extends Model
 
         $name = time() . $file->getClientOriginalName();
 
-        $photo->photo = '/'.$photo->baseDir . '/' . $name;
+        $photo->path = '/'.$photo->baseDir . '/' . $name;
 
         $file->move($photo->baseDir, $name);
 

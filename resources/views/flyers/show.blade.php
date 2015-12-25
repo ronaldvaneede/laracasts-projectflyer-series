@@ -15,7 +15,7 @@
 
         <div class="col-md-9">
             @foreach($flyer->photos as $photo)
-                <img src="{{ $photo->photo }}" alt="" />
+                <img src="{{ $photo->path }}" alt="" />
             @endforeach
         </div>
 
