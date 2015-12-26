@@ -16,6 +16,11 @@ class Flyer extends Model
         'description'
     ];
 
+    public function owner()
+    {
+        return $this->belongsTo('App\User', 'user_id');
+    }
+
     public function photos()
     {
         return $this->hasMany('App\Photo');
@@ -36,5 +41,13 @@ class Flyer extends Model
     public function addPhoto(Photo $photo)
     {
         return $this->photos()->save($photo);
+    }
+
+    public function ownedBy(User $user)
+    {
+        if ($this->user_id == $user->id) {
+            return true;
+        }
+        return false;
     }
 }
