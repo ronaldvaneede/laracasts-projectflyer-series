@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Flyer;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
@@ -27,5 +28,15 @@ class User extends Authenticatable
     public function owns($relation)
     {
         return $relation->user_id == $this->id;
+    }
+
+    public function flyers()
+    {
+        return $this->hasMany(Flyer::class);
+    }
+
+    public function publish(Flyer $flyer)
+    {
+        return $this->flyers()->save($flyer);
     }
 }
