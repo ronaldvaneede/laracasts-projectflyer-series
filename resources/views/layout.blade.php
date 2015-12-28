@@ -40,6 +40,7 @@
             @yield('content')
         </div>
 
+        <script src="http://code.jquery.com/jquery-2.1.4.js"></script>
         <script src="/js/libs.js"></script>
         @yield('scripts.footer')
 
