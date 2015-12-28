@@ -14,6 +14,7 @@
         </div>
 
         <div class="col-md-8 gallery">
+
             @foreach($flyer->photos->chunk(4) as $set)
                 <div class="row">
                     @foreach($set as $photo)
@@ -23,20 +24,20 @@
                     @endforeach
                 </div>
             @endforeach
+
+            @if ($user && $user->owns($flyer))
+                <hr>
+
+                <form id="addPhotosForm"
+                      class="dropzone"
+                      action="{{ route('store_photo_path', [$flyer->zip, $flyer->street]) }}"
+                      method="post">
+                    {{ csrf_field() }}
+                </form>
+            @endif
         </div>
 
     </div>
-
-    <hr>
-
-    <h2>Add your photos</h2>
-
-    <form id="addPhotosForm"
-          class="dropzone"
-          action="{{ route('store_photo_path', [$flyer->zip, $flyer->street]) }}"
-          method="post">
-        {{ csrf_field() }}
-    </form>
 @endsection
 
 @section('scripts.footer')
